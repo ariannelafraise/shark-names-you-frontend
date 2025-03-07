@@ -1,7 +1,7 @@
 'use client';
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import deleteAccount from "../lib/settings/deleteAccount";
+import deleteAccount from "../../../lib/settings/deleteAccount";
 
 const DeleteAccountButton = () => {
 
@@ -16,7 +16,7 @@ const DeleteAccountButton = () => {
                 })
                 .then(() => {
                     signOut({
-                        callbackUrl: '/login?error=Account deleted successfully'
+                        callbackUrl: '/login?error=Votre compte a été supprimé'
                     });
                 });
         }
@@ -24,10 +24,10 @@ const DeleteAccountButton = () => {
 
     return (
         <input
-        onClick={handle}
-        className="button danger-button" 
-        type="button"
-        value="Delete my account"
+            onClick={handle}
+            className="button danger-button" 
+            type="button"
+            value="Supprimer mon compte"
         />
     );
 };

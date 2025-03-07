@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <h1 className="mt-10 text-center text-[10vw] md:text-[5vw] font-thin">Welcome!</h1>
+      <h1 className="mt-10 text-center text-[10vw] md:text-[5vw] font-thin">Bievenue!</h1>
       <p>{token}</p>
     </>
   );

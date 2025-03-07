@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
-import { InvalidCredentialsError, ServerError } from "@/app/errors";
+import { InvalidCredentialsError, ServerError, UnknownError } from "@/app/errors";
 
 // TODO: understand csrf
 
@@ -16,8 +16,10 @@ const handler = NextAuth({
             async authorize(credentials) {
                 if (!credentials) throw new InvalidCredentialsError();
 
+                let res = null;
+
                 try {
-                    const res = await axios.post('http://localhost:8080/auth/token',{},
+                    res = await axios.post('http://localhost:8080/auth/token',{},
                         {
                             headers: {
                                 'Authorization': 'Basic ' + btoa(credentials?.username + ":" + credentials?.password)
@@ -25,18 +27,20 @@ const handler = NextAuth({
                             validateStatus: () => true
                         }
                     );
+                    console.log(res.status);
+                } catch {
+                    throw new UnknownError();
+                }
 
-                    switch (res.status) {
-                        case 200:
-                            return res.data;
-                        case 401:
-                            throw new InvalidCredentialsError();
-                        default:
-                            throw new ServerError();
-                    }
-                } catch (e) {
-                    console.error(e);
-                    throw new ServerError();
+                if (!res) throw new UnknownError();
+
+                switch (res.status) {
+                    case 200:
+                        return res.data;
+                    case 401:
+                        throw new InvalidCredentialsError();
+                    default:
+                        throw new ServerError();
                 }
             }
         })

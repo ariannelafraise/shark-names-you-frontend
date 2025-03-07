@@ -1,10 +1,10 @@
 'use client';
 import { useSession } from "next-auth/react";
-import LikesList from "../components/LikesList";
-import NavigationCard from "../components/NavigationCard";
+import LikesList from "../components/dashboard/likes/LikesList";
+import NavigationCard from "../components/dashboard/navigation/NavigationCard";
 import { redirect } from "next/navigation";
-import AccountCard from "../components/AccountCard";
-import GreetCard from "../components/GreetCard";
+import AccountCard from "../components/dashboard/account/AccountCard";
+import GreetCard from "../components/dashboard/greet/GreetCard";
 
 const Dashboard = () => {
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
                     src="https://cdn.discordapp.com/attachments/818886030605942834/1346932977485086872/FaPCaeF.png?ex=67caa556&is=67c953d6&hm=552a6a300570bbc75a813da3795b180f4355b84de7bbf60d44064b1931dcaccb&"
                     className="w-1/2 md:w-75"
                 />
-                <h1>Dashboard</h1>
+                <h1>Tableau de bord</h1>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="flex flex-col items-center p-10 rounded-3xl w-full xl:w-9/10">

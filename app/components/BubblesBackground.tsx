@@ -13,6 +13,7 @@ import { loadFull } from "tsparticles"; // might be good to switch to slim (ligh
 
 const BubblesBackground = () => {
     const [init, setInit] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         initParticlesEngine(async (engine) => {
@@ -20,6 +21,23 @@ const BubblesBackground = () => {
         }).then(() => {
             setInit(true);
         });
+
+        // Check if the device is mobile
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768); // Adjust the threshold as needed
+        };
+
+        // Initial check
+        checkMobile();
+
+        // Add event listener for window resize
+        window.addEventListener("resize", checkMobile);
+
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+        };
+
     }, []);
 
     const particlesLoaded = async (container?: Container) : Promise<void> => {
@@ -84,7 +102,7 @@ const BubblesBackground = () => {
         }), []
     );
 
-    if (init) {
+    if (init && !isMobile) {
         /*confetti({
             particleCount: 100,
             spread: 70,

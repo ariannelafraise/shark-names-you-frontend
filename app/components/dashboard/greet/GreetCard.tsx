@@ -1,4 +1,4 @@
-import useUsername from "../lib/user/useUsername";
+import useUsername from "../../../lib/user/useUsername";
 
 const GreetCard = () => {
 
@@ -8,7 +8,7 @@ const GreetCard = () => {
 
     return (
         <div className="dashboard-component">
-            {isLoading ? <h2>...</h2> : <h2>Hi {data}!</h2>}
+            {isLoading ? <h2>...</h2> : <h2>Bonjour {data}!</h2>}
         </div>
     );
 };

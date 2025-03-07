@@ -24,7 +24,7 @@ const Login = () => {
 
     return (
         <>
-            <h1>Login</h1>
+            <h1>Connexion</h1>
             <form
                 onSubmit={(e : FormEvent) => handleSignIn(e)}
                 className="flex flex-col justify-center items-center"
@@ -43,7 +43,7 @@ const Login = () => {
                         required={true}
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Username"
+                        placeholder="Nom d'utilisateur"
                         className="p-2 m-1 border-b-2 border-solid border-gray-600 focus:border-white w-full text-center"
                     />
                     <input
@@ -52,13 +52,13 @@ const Login = () => {
                         required={true}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
+                        placeholder="Mot de passe"
                         className="p-2 mt-4 m-1 border-b-2 border-solid border-gray-600 focus:border-white w-full text-center"
                     />
                     <input
                         type="submit"
-                        value="Login"
-                        className="p-2 mt-4 m-1 rounded-md border-2 border-sky-300 text-sky-300 transition duration-500 hover:border-sky-600 hover:text-white hover:bg-sky-800 w-full"
+                        value="Se connecter"
+                        className="button blue-button"
                     />
                 </div>
             </form>

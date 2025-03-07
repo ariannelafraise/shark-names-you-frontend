@@ -10,7 +10,7 @@ const Logout = () => {
     useEffect(() => {
         if (status === "authenticated") {
             signOut({
-                callbackUrl: '/login?error=Logged out successfully'
+                callbackUrl: '/login?error=Déconnexion réussie'
             });
         } else {
             redirect('/login');

@@ -8,19 +8,19 @@ const NavigationCard = () => {
                 className="button blue-button"
                 href="/masculine-names"
             >
-                Masculine names
+                Noms masculins
             </Link>
             <Link 
             className="button blue-button"
             href="/feminine-names"
             >
-                Feminine names
+                Noms féminins
             </Link>
             <Link
             className="button blue-button"
-            href="/androgynous-names"
+            href="/neutral-names"
             >
-                Androgynous names
+                Noms neutres
             </Link>
         </div>
     );

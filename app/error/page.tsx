@@ -11,7 +11,7 @@ const ErrorPage = () => {
     if (!code) code = '-1';
     if (!message) message = 'Something went wrong';
     
-    return <ErrorComponent code={parseInt(code)} message={message}/>
+    return <ErrorComponent code={parseInt(code)} message={message}/>;
 };
 
 export default ErrorPage;
