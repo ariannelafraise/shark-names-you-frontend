@@ -16,14 +16,23 @@ const handler = NextAuth({
             async authorize(credentials) {
                 if (!credentials) throw new InvalidCredentialsError();
 
-                const res = await axios.post('http://localhost:8080/auth/token',{},
-                    {
-                        headers: {
-                            'Authorization': 'Basic ' + btoa(credentials?.username + ":" + credentials?.password)
-                        },
-                        validateStatus: () => true
-                    }
-                );
+                let res = null
+
+                try {
+                    res = await axios.post('http://localhost:8080/auth/token',{},
+                        {
+                            headers: {
+                                'Authorization': 'Basic ' + btoa(credentials?.username + ":" + credentials?.password)
+                            },
+                            validateStatus: () => true
+                        }
+                    );
+                } catch (e) {
+                    console.error(e);
+                    throw new ServerError();
+                }
+                
+                if (!res) throw new ServerError(); 
 
                 switch (res.status) {
                     case 200:

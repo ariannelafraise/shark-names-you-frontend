@@ -11,7 +11,7 @@ const Login = () => {
     const params = useSearchParams();
 
     if (session) {
-        redirect('/');
+        redirect('/dashboard');
     }
 
     const [username, setUsername] = useState('');
@@ -24,18 +24,18 @@ const Login = () => {
 
     return (
         <>
-            <h1 className="mt-10 text-center text-[10vw] md:text-[5vw] font-thin">Login</h1>
+            <h1>Login</h1>
             <form
                 onSubmit={(e : FormEvent) => handleSignIn(e)}
                 className="flex flex-col justify-center items-center"
             >
-                <div className="bg-blue-800 flex flex-col items-center p-10 rounded-3xl m-10 w-9/10 md:w-1/2 lg:w-1/4">
+                <div className="bg-blue-800 flex flex-col items-center p-10 rounded-3xl m-10 w-9/10 md:w-1/2 xl:w-1/4">
                     <img
                         src="https://cdn.discordapp.com/attachments/818886030605942834/1346932977485086872/FaPCaeF.png?ex=67c9fc96&is=67c8ab16&hm=ae650f70457e293c0e6e97ea6a48b8ace3a8ee34b817f89cb0c0cd013f9e95af&"
                         className="w-3/4 md:w-75"
                     />
                     {
-                        params.get('error') ? <h1 className="text-red-300">{params.get('error')}</h1> : <></>
+                        params.get('error') ? <p className="text-red-300">{params.get('error')}</p> : <></>
                     }
                     <input
                         id="username"

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+    --color-blue-700: #24304e;
     --color-blue-800: #1e2942;
     --color-blue-900: #161f33;
     --color-lol: #94d8ff;
@@ -9,4 +10,32 @@
 .content {
     position: relative;
     z-index: 1000;
+}
+
+.button {
+    @apply text-center p-2 mt-4 m-1 rounded-md border-2 transition duration-250 w-full
+}
+
+.blue-button {
+    @apply border-sky-300 text-sky-300 hover:border-sky-600 hover:text-white hover:bg-sky-800
+}
+
+.danger-button {
+    @apply border-red-300 text-red-300 hover:border-red-600 hover:text-white hover:bg-red-800
+}
+
+.dashboard-component {
+    @apply bg-blue-800 p-10 rounded-2xl flex flex-col w-full shadow-md h-full
+}
+
+.dashboard-solo {
+    @apply mt-4 mb-4
+}
+
+h1 {
+    @apply text-center text-[15vw] md:text-[10vw] xl:text-[5vw] font-light
+}
+
+h2 {
+    @apply text-center text-[10vw] md:text-[5vw] xl:text-[2.5vw] font-light
 }

@@ -5,10 +5,16 @@ export class InvalidCredentialsError extends Error {
     }
 }
 
-
 export class ServerError extends Error {
     constructor() {
         super("Something went wrong. Please try again later.");
         this.name = "ServerError";
+    }
+}
+
+export class UnknownError extends Error {
+    constructor() {
+        super("Something went wrong. Please try again later.");
+        this.name = "UnknownError";
     }
 }
