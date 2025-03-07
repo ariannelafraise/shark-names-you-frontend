@@ -7,6 +7,10 @@
     --color-lol: #94d8ff;
 }
 
+::selection {
+    background-color: #38aaec;
+}
+
 .content {
     position: relative;
     z-index: 1000;

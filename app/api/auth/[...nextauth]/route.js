@@ -16,10 +16,8 @@ const handler = NextAuth({
             async authorize(credentials) {
                 if (!credentials) throw new InvalidCredentialsError();
 
-                let res = null
-
                 try {
-                    res = await axios.post('http://localhost:8080/auth/token',{},
+                    const res = await axios.post('http://localhost:8080/auth/token',{},
                         {
                             headers: {
                                 'Authorization': 'Basic ' + btoa(credentials?.username + ":" + credentials?.password)
@@ -27,20 +25,18 @@ const handler = NextAuth({
                             validateStatus: () => true
                         }
                     );
+
+                    switch (res.status) {
+                        case 200:
+                            return res.data;
+                        case 401:
+                            throw new InvalidCredentialsError();
+                        default:
+                            throw new ServerError();
+                    }
                 } catch (e) {
                     console.error(e);
                     throw new ServerError();
-                }
-                
-                if (!res) throw new ServerError(); 
-
-                switch (res.status) {
-                    case 200:
-                        return res.data;
-                    case 401:
-                        throw new InvalidCredentialsError();
-                    default:
-                        throw new ServerError();
                 }
             }
         })
